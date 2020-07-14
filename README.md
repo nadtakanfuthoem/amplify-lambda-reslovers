@@ -1,3 +1,5 @@
+# Amplify Lambda reslovers 
+
 type Query {
 	todos: [Todo] 
 	getTodo: Todo
@@ -12,4 +14,12 @@ type Todo {
   id: ID!
   name: String!
   description: String
+}
+
+## Example query on Appsync console
+query{
+  getTodo(id:1){
+    id
+    name
+  }
 }
