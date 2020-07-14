@@ -23,3 +23,6 @@ query{
     name
   }
 }
+
+### resources
+https://www.youtube.com/watch?v=uI_S1_ucXi4
