@@ -82,7 +82,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-myapp-dev-182825-deployment",
-					"S3Key": "amplify-builds/myappee61aaa5-6c545337504e4455444c-build.zip"
+					"S3Key": "amplify-builds/myappee61aaa5-6c4b4432524c7a4d3855-build.zip"
 				},
 				"Layers": []
 			}
