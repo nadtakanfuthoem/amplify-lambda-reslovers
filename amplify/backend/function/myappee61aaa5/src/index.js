@@ -15,7 +15,8 @@ exports.handler = async (event) => {
 
 	switch(event.typeName) {
 		case "Mutation": 
-			await createCoin.createCoin(event)
+			const result = await createCoin.createCoin(event)
+			return result
 		case "Query":
 			await getCoins.getCoins()
 	}
