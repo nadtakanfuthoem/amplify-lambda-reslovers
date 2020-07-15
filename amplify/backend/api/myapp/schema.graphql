@@ -1,10 +1,23 @@
 type Query {
 	todos: [Todo] @function(name: "todos-${env}")
 	getTodo(id: ID!): Todo @function(name: "todos-${env}")
+	getCoins(limit: Int , start: Int): [Coin] @function(name: "currentcyfunction-${env}")
 }
 
 type Todo {
   id: ID!
   name: String!
   description: String
+}
+
+type Coin {
+	id: String!
+	name: String!
+	symbol: String!
+	price_usd: String!
+}
+
+# Mutation-> Create, Update, Delete
+type Mutation {
+	createCoin(name: String! symbol: String! price_usd: String!): Coin @function(name: "currentcyfunction-${env}")
 }

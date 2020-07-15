@@ -9,6 +9,14 @@
 		},
 		"env": {
 			"Type": "String"
+		},
+		"storagecurrencytableName": {
+			"Type": "String",
+			"Default": "storagecurrencytableName"
+		},
+		"storagecurrencytableArn": {
+			"Type": "String",
+			"Default": "storagecurrencytableArn"
 		}
 	},
 	"Conditions": {
@@ -33,12 +41,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"todos",
+						"currentcyfunction",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"todos",
+									"currentcyfunction",
 									"-",
 									{
 										"Ref": "env"
@@ -55,6 +63,12 @@
 						},
 						"REGION": {
 							"Ref": "AWS::Region"
+						},
+						"STORAGE_CURRENCYTABLE_NAME": {
+							"Ref": "storagecurrencytableName"
+						},
+						"STORAGE_CURRENCYTABLE_ARN": {
+							"Ref": "storagecurrencytableArn"
 						}
 					}
 				},
@@ -68,8 +82,9 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-myapp-dev-182825-deployment",
-					"S3Key": "amplify-builds/myappfcd151c8-2b5857776e6869396d37-build.zip"
-				}
+					"S3Key": "amplify-builds/myappee61aaa5-6c545337504e4455444c-build.zip"
+				},
+				"Layers": []
 			}
 		},
 		"LambdaExecutionRole": {
@@ -78,12 +93,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"myappLambdaRoleaa736aef",
+						"myappLambdaRole15c6430a",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"myappLambdaRoleaa736aef",
+									"myappLambdaRole15c6430a",
 									"-",
 									{
 										"Ref": "env"
@@ -149,6 +164,58 @@
 									}
 								]
 							}
+						}
+					]
+				}
+			}
+		},
+		"AmplifyResourcesPolicy": {
+			"DependsOn": [
+				"LambdaExecutionRole"
+			],
+			"Type": "AWS::IAM::Policy",
+			"Properties": {
+				"PolicyName": "amplify-lambda-execution-policy",
+				"Roles": [
+					{
+						"Ref": "LambdaExecutionRole"
+					}
+				],
+				"PolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Action": [
+								"dynamodb:Put*",
+								"dynamodb:Create*",
+								"dynamodb:BatchWriteItem",
+								"dynamodb:Get*",
+								"dynamodb:BatchGetItem",
+								"dynamodb:List*",
+								"dynamodb:Describe*",
+								"dynamodb:Scan",
+								"dynamodb:Query",
+								"dynamodb:Update*",
+								"dynamodb:RestoreTable*",
+								"dynamodb:Delete*"
+							],
+							"Resource": [
+								{
+									"Ref": "storagecurrencytableArn"
+								},
+								{
+									"Fn::Join": [
+										"/",
+										[
+											{
+												"Ref": "storagecurrencytableArn"
+											},
+											"index/*"
+										]
+									]
+								}
+							]
 						}
 					]
 				}
