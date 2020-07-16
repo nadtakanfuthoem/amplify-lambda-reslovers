@@ -10,12 +10,29 @@ export const todos = /* GraphQL */ `
     }
   }
 `;
-export const getTodos = /* GraphQL */ `
-  query GetTodos($id: ID!) {
-    getTodos(id: $id) {
+export const getTodo = /* GraphQL */ `
+  query GetTodo($id: ID!) {
+    getTodo(id: $id) {
       id
       name
       description
+    }
+  }
+`;
+export const getCoins = /* GraphQL */ `
+  query GetCoins($limit: Int, $start: Int) {
+    getCoins(limit: $limit, start: $start) {
+      id
+      name
+      symbol
+      price_usd
+    }
+  }
+`;
+export const fetchImage = /* GraphQL */ `
+  query FetchImage($imageInfo: String!) {
+    fetchImage(imageInfo: $imageInfo) {
+      data
     }
   }
 `;
