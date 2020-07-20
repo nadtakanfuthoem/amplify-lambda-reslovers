@@ -162,58 +162,6 @@ class App extends Component {
 		} catch (e) {
 			console.log(e)
 		}
-		
-
-    // Storage.put(this.state.imageName, this.state.imageInfo)
-    // .then (result => {
-		// 	console.log(`result`, result);
-    //   const image = {
-    //     imageName: this.state.imageName
-    //   }
-    //   if (labels) {
-    //     image.type = 'labels'
-		// 	}
-			
-		// 	console.log(`image`, image);
-
-    //   API.graphql(graphqlOperation(Query, image))
-    //     .then(data => {
-		// 			console.log(`typeof data`,typeof data);
-		// 			console.log(`data`,data);
-		// 			// TODO: understand reslover, query [ImageData] vs ImageData, fix login css, change callback to async/await
-		// 			const result = {};
-		// 			result = data.fetchImage;
-		// 			console.log(result)
-
-		// 			// console.log(`result`, result);
-		// 			// console.log(`result.data`, result.data.fetchImage.data);
-					
-		// 			// this.setState({
-		// 			// 	processing: false,
-		// 			// 	rekognitionData: result.FaceDetails
-		// 			// })
-    //       // if (parsedData.FaceDetails) {
-    //       //   this.setState({
-    //       //     processing: false,
-    //       //     rekognitionData: parsedData.FaceDetails
-    //       //   })
-    //       // }
-    //       // if (parsedData.Labels) {
-    //       //   this.setState({
-    //       //     processing: false,
-    //       //     labelData: parsedData.Labels
-    //       //   })
-    //       // }
-         
-    //     })
-    //     .catch(error => {
-    //       this.setState({
-    //         processing: false,
-    //       })
-    //       console.log('error: ', error)
-    //     })
-    // })
-    // .catch(err => console.log(err));
   }
   
   render() {
