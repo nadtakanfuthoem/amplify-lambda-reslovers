@@ -33,12 +33,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"fetchImage",
+						"fetchimage",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"fetchImage",
+									"fetchimage",
 									"-",
 									{
 										"Ref": "env"
@@ -69,7 +69,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-myapp-dev-182825-deployment",
-					"S3Key": "amplify-builds/myapp29a97caf-727855704e656b706347-build.zip"
+					"S3Key": "amplify-builds/myapp29a97caf-5a31336f4d6d51573136-build.zip"
 				}
 			}
 		},
@@ -150,6 +150,22 @@
 									}
 								]
 							}
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"rekognition:DetectFaces"
+							],
+							"Resource": "*"
+						},
+						{
+							"Action": [
+								"s3:GetObject"
+							],
+							"Effect": "Allow",
+							"Resource": [
+								"arn:aws:s3:::facial-db-us-east-1182825-dev/*"
+							]
 						}
 					]
 				}

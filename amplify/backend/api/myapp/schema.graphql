@@ -2,7 +2,7 @@ type Query {
 	todos: [Todo] @function(name: "todos-${env}")
 	getTodo(id: ID!): Todo @function(name: "todos-${env}")
 	getCoins(limit: Int , start: Int): [Coin] @function(name: "currentcyfunction-${env}")
-	fetchImage(imageInfo: String!): ImageData @function(name: "fetchImage-${env}")
+	fetchImage(imageName: String!, type: String!): ImageData @function(name: "fetchimage-${env}")
 }
 
 type Todo {
@@ -17,6 +17,7 @@ type Coin {
 	symbol: String!
 	price_usd: String!
 }
+
 
 type ImageData {
 	data: String!

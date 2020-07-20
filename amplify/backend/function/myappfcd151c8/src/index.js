@@ -36,7 +36,12 @@ exports.handler = async (event) => {
 		const reslover = typeHandler[event.fieldName];
 		if(reslover){
 			var result = await reslover(event)
-			console.log(result)
+			// { id: 1, name: 'Wake me up at 4 AM' } getTodo
+			// todos
+			// [{ id: 1, name: 'Wake me up at 4 AM' },
+			//  { id: 2, name: 'Office at 9 AM' },
+			//  { id: 3, name: 'Sleep at 10 PM' }]
+			console.log(`result`, result)
 			return result
 		}
 	}

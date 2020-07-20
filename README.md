@@ -40,6 +40,13 @@ query{
   }
 }
 
+query{
+  todos {
+    id
+    name
+  }
+}
+
 # basic request
 query listCoins {
   getCoins {
@@ -60,7 +67,17 @@ query listCoinsWithArgs {
   }
 }
 
-Local testing
+# query fetch image
+query{
+  fetchImage(imageName: "46048Screen Shot 2020-07-15 at 9.07.56 AM.png", type: "labels") {
+    data
+  }
+}
+
+
+# Reslover
+
+# Local testing
 
 ### resources
 https://www.youtube.com/watch?v=uI_S1_ucXi4

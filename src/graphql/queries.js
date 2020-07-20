@@ -30,9 +30,10 @@ export const getCoins = /* GraphQL */ `
   }
 `;
 export const fetchImage = /* GraphQL */ `
-  query FetchImage($imageInfo: String!) {
-    fetchImage(imageInfo: $imageInfo) {
-      data
+  query FetchImage($imageName: String!, $type: String!) {
+    fetchImage(imageName: $imageName, type: $type) {
+      id
+      name
     }
   }
 `;

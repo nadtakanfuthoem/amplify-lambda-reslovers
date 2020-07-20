@@ -1,6 +1,6 @@
 {
     "identityPoolName": "myappea8b091a_identitypool_ea8b091a",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "myappea8b091a",
     "userPoolName": "myappea8b091a_userpool_ea8b091a",
     "autoVerifiedAttributes": [
